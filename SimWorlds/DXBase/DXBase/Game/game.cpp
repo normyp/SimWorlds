@@ -50,7 +50,7 @@ Game::Game(ID3D11Device* _pd3dDevice, HINSTANCE _hInstance) :m_playTime(0), m_my
 	m_GD->keyboard = m_keyboardState;
 	m_GD->prevKeyboard = m_prevKeyboardState;
 	m_GD->mouse = &m_mouse_state;
-	m_GD->GS = GS_PLAY_TPS_CAM;
+	m_GD->GS = GS_PLAY_MAIN_CAM;
 
 	//create a base camera
 	m_cam = new Camera(0.25f * XM_PI, 640.0f / 480.0f, 1.0f, 10000.0f, Vector3::Zero, Vector3::UnitY);
@@ -60,12 +60,12 @@ Game::Game(ID3D11Device* _pd3dDevice, HINSTANCE _hInstance) :m_playTime(0), m_my
 	/*Terrain* terrain = new Terrain("table.cmo", _pd3dDevice, m_myEF,Vector3(100.0f,0.0f,100.0f), 0.0f, 0.0f, 0.0f, 0.25f * Vector3::One);
 	m_GameObjects.push_back(terrain);*/
 
-	Turret_Base* base = new Turret_Base("treasure_chest.cmo", _pd3dDevice, m_myEF);
+	/*Turret_Base* base = new Turret_Base("treasure_chest.cmo", _pd3dDevice, m_myEF);
 	m_GameObjects.push_back(base);
-	base->SetPos(Vector3(100.0f, 0.0f, -100.0f));
+	base->SetPos(Vector3(100.0f, 0.0f, -100.0f));*/
 
-	m_TPSCam = new TPSCamera(0.25f * XM_PI, 640.0f / 480.0f, 1.0f, 10000.0f, base, Vector3::UnitY, Vector3(-200.0f, 100.0f, 0.0f));
-	m_GameObjects.push_back(m_TPSCam);
+	/*m_TPSCam = new TPSCamera(0.25f * XM_PI, 640.0f / 480.0f, 1.0f, 10000.0f, base, Vector3::UnitY, Vector3(-200.0f, 100.0f, 0.0f));
+	m_GameObjects.push_back(m_TPSCam);*/
 	
 	m_Light = new Light(Vector3(0.0f, 100.0f, 160.0f), Color(1.0f, 1.0f, 1.0f, 1.0f), Color(0.4f, 0.1f, 0.1f, 1.0f));
 	m_GameObjects.push_back(m_Light);
@@ -183,12 +183,7 @@ bool Game::update()
 		return false;
 	}
 
-	if (m_mouse_state.rgbButtons[2] & 0x80)
-	{
-		return false;
-	}
-
-	if ((m_keyboardState[DIK_SPACE] & 0x80) && !(m_prevKeyboardState[DIK_SPACE] & 0x80))
+	/*if ((m_keyboardState[DIK_SPACE] & 0x80) && !(m_prevKeyboardState[DIK_SPACE] & 0x80))
 	{
 		if (m_GD->GS == GS_PLAY_MAIN_CAM)
 		{
@@ -198,7 +193,7 @@ bool Game::update()
 		{
 			m_GD->GS = GS_PLAY_MAIN_CAM;
 		}
-	}
+	}*/
 
 
 	//calculate frame time-step dt for passing down to game objects

@@ -10,7 +10,7 @@ BoidManager::BoidManager(int _maxBoids, ID3D11Device* pd3dDevice)
 	m_destination = XMFLOAT3(0.0f, 0.0f, 0.0f);
 	for (int i = 0; i < maxBoids; i++)
 	{
-		myBoids.push_back(new VBCube(1, pd3dDevice));
+		myBoids.push_back(new VBCube(10, pd3dDevice));
 	}
 }
 
@@ -50,6 +50,6 @@ void BoidManager::Tick(GameData * GD)
 
 	for (list<VBCube *>::iterator it = myBoids.begin(); it != myBoids.end(); it++)
 	{
-		(*it)->Tick(GD);
+		(*it)->tick(GD);
 	}
 }

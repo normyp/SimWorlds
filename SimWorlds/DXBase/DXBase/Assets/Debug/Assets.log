@@ -1,5 +1,14 @@
-﻿Build started 27/02/2015 14:52:03.
+﻿Build started 04/03/2015 20:23:25.
+     1>Project "D:\Programming\Simworld\SimWorlds\SimWorlds\DXBase\DXBase\Assets\Assets.vcxproj" on node 2 (Build target(s)).
+     1>_ImageContentTask:
+         grass.jpg
+         white.jpg
+         logo.png
+       _MeshContentTask:
+         table.FBX
+         treasure_chest.FBX
+     1>Done Building Project "D:\Programming\Simworld\SimWorlds\SimWorlds\DXBase\DXBase\Assets\Assets.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.09
+Time Elapsed 00:00:02.36

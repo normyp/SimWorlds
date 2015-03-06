@@ -4,13 +4,7 @@
 VBCube::VBCube(int _size, ID3D11Device* GD)
 {
 	m_alive = false;
-}
 
-VBCube::~VBCube()
-{}
-
-void VBCube::init(int _size, ID3D11Device* GD)
-{
 	m_size = _size;
 
 	//calculate number of vertices and primatives
@@ -23,7 +17,7 @@ void VBCube::init(int _size, ID3D11Device* GD)
 	for (int i = 0; i<numVerts; i++)
 	{
 		indices[i] = i;
-		m_vertices[i].texCoord = Vector2::One; 
+		m_vertices[i].texCoord = Vector2::One;
 	}
 
 	//in each loop create the two traingles for the matching sub-square on each of the six faces
@@ -151,9 +145,11 @@ void VBCube::init(int _size, ID3D11Device* GD)
 	BuildIB(GD, indices);
 	BuildVB(GD, numVerts, m_vertices);
 
-	delete[] m_vertices; //this is no longer needed as this is now in the Vertex Buffer
+	delete[] m_vertices;
 }
 
+VBCube::~VBCube()
+{}
 bool VBCube::getAliveState()
 {
 	return m_alive;
@@ -162,21 +158,21 @@ bool VBCube::getAliveState()
 void VBCube::spawn()
 {
 	m_alive = true;
-	/*m_pos = Vector3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
-	m_endPos = Vector3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);*/
+	m_pos = Vector3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
+	m_endPos = Vector3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
 }
 
 void VBCube::tick(GameData * GD)
 {
-	/*XMVECTOR vector1 = XMLoadFloat3(&m_endPos);
+	XMVECTOR vector1 = XMLoadFloat3(&m_endPos);
 	XMVECTOR vector2 = XMLoadFloat3(&m_pos);
 	XMVECTOR direction = XMVectorSubtract(vector1, vector2);
 	float dist = XMVectorGetX(XMVector3Length(direction));
 	direction = 100.0f*GD->dt*XMVector3Normalize(direction);
 	XMStoreFloat3(&m_pos, vector2 + direction);
-	if (dist < 10.0)
+	if (dist < 1.0)
 	{
 		m_endPos = Vector3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
-	}*/
+	}
 	VBGO::Tick(GD);
 }

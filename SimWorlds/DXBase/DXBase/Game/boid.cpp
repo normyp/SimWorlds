@@ -23,7 +23,7 @@ void Boid::tick(GameData * GD)
 	XMStoreFloat3(&m_pos, vector2 + direction);
 	if (dist < 10.0)
 	{
-		m_endPos = XMFLOAT3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
+		m_endPos = XMFLOAT3(-1 * (((float)rand() / (float)RAND_MAX) - 0.5f), 1 * (((float)rand() / (float)RAND_MAX) - 0.5f), -2 * ((float)rand() / (float)RAND_MAX) - 0.5f);
 	}
 	CMOGO::Tick(GD);
 }
@@ -31,8 +31,8 @@ void Boid::tick(GameData * GD)
 void Boid::spawn()
 {
 	m_alive = true;
-	m_pos = Vector3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
-	m_endPos = XMFLOAT3(-100 * (((float)rand() / (float)RAND_MAX) - 0.5f), 100 * (((float)rand() / (float)RAND_MAX) - 0.5f), -200 * ((float)rand() / (float)RAND_MAX) - 0.5f);
+	m_pos = Vector3(-1 * (((float)rand() / (float)RAND_MAX) - 0.5f), 1 * (((float)rand() / (float)RAND_MAX) - 0.5f), -2 * ((float)rand() / (float)RAND_MAX) - 0.5f);
+	m_endPos = XMFLOAT3(-1 * (((float)rand() / (float)RAND_MAX) - 0.5f), 1 * (((float)rand() / (float)RAND_MAX) - 0.5f), -2 * ((float)rand() / (float)RAND_MAX) - 0.5f);
 }
 
 bool Boid::getAliveState()
